@@ -1,0 +1,100 @@
+
+### SPECIFY THE NUMBER OF PRODUCTION STEPS ###
+variable Nprod equal 30000
+
+### ASSIGN ATOMIC VELOCITIES ###
+velocity all create ${T} 12345 dist gaussian rot yes mom yes
+velocity all create 1.5 12345 dist gaussian rot yes mom yes
+
+### SPECIFY ENSEMBLE ###
+timestep ${timestep}
+timestep 0.02
+fix nve all nve
+
+### THERMODYNAMIC OUTPUT CONTROL ###
+thermo_style custom time etotal temp press
+thermo 10
+
+### RECORD TRAJECTORY ###
+dump traj all custom 1000 traj.dump id x y z
+
+### SPECIFY TIMESTEP ###
+variable n_steps equal floor(50/${timestep})
+variable n_steps equal floor(50/0.02)
+timestep ${timestep}
+timestep 0.02
+
+### RUN SIMULATION TO MELT CRYSTAL ###
+run ${n_steps}
+run 2500
+Last active /omp style is pair_style lj/cut/omp
+Neighbor list info ...
+  update every 1 steps, delay 10 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 4.5
+  ghost atom cutoff = 4.5
+  binsize = 2.25, bins = 3 3 3
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut/omp, perpetual
+      attributes: half, newton on, omp
+      pair build: half/bin/atomonly/newton/omp
+      stencil: half/bin/3d/newton
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 10.63 | 10.63 | 10.63 Mbytes
+Time TotEng Temp Press 
+           0   -3.0327711          1.5   0.89516323 
+         0.2   -2.9861398    1.4636141    1.3824462 
+         0.4   -2.9911143    1.2511012    2.8602076 
+         0.6   -2.9940896    1.2221582    3.0137248 
+         0.8   -2.9925405     1.336608    2.3541815 
+           1   -2.5382489      1.38951    4.1553678 
+         1.2   -2.3938222    1.5197454    3.9006337 
+         1.4   -2.3883808    1.5024603    4.1453802 
+         1.6   -2.3964131    1.4770669    4.4455035 
+         1.8   -2.3836418    1.5978618    3.6833149 
+           2   -2.3869815     1.633676    3.5676387 
+         2.2   -2.3699512    1.6140196    3.7773397 
+         2.4   -2.3329031    1.5643314    4.0456628 
+         2.6    -2.329112    1.5088217    4.5682295 
+         2.8   -2.3120516    1.6476067    3.5927836 
+           3   -2.2946564    1.6028797    4.1229579 
+         3.2   -2.2664573    1.5680788    4.4765884 
+         3.4   -2.0951218    1.4454494    5.8190715 
+         3.6   -2.0866304    1.5656827    5.2322332 
+         3.8   -2.0750727    1.7097746    4.3524752 
+           4   -2.0617847    1.6847948    4.5316872 
+         4.2   -2.0866815    1.6301599    4.7523002 
+         4.4   -2.0712231    1.6038929    4.8944565 
+         4.6   -2.0797881    1.7784353    4.1021654 
+         4.8   -2.0476245    1.7865956    3.9293463 
+           5   -2.0352221    1.8501286    3.7730309 
+         5.2   -2.0134736    1.6623948    5.2535827 
+         5.4   -1.9862184    1.7231431    4.8429822 
+         5.6   -2.0014151    1.6299563    5.3572507 
+         5.8   -2.0139682    1.7023591    4.8002731 
+           6    -2.018844    1.7232047    4.8051402 
+         6.2   -2.0070277    1.6231072    5.0001201 
+         6.4   -2.0128753    1.6871391    4.8855166 
+         6.6   -1.9675512    1.7365435    4.5841359 
+         6.8   -1.9105031    1.6852038    5.1863285 
+           7   -1.8854192    1.6294836    5.6538055 
+         7.2    -1.900571    1.7818345    4.7783294 
+         7.4   -1.8948274    1.6964861    5.3469367 
+         7.6   -1.8870003    1.7176847    5.3054658 
+         7.8   -1.8591342    1.6644825    5.9212966 
+           8   -1.7468395    1.6842568    5.9609634 
+         8.2   -1.7677584    1.7485357    5.4911463 
+         8.4    -1.669414    1.8028532    5.7263682 
+         8.6   -1.6775748    1.7940748    5.6881477 
+         8.8   -1.6701657     1.917276     5.109845 
+           9   -1.6224001    1.9430867    4.9807116 
+         9.2   -1.5467152    1.8038126    6.1825254 
+         9.4   -1.5079841     1.791222    6.3640203 
+         9.6   -1.5059531    1.8666496    6.0410171 
+         9.8   -1.4653448    1.9431712    5.7324033 
+          10   -1.4352554    1.9712638    5.8784905 
+        10.2    -1.430259    2.1295402    4.8557087 
+        10.4   -1.3501003    1.8893118    6.4369701 
+        10.6   -1.345
+
+"ERROR: Lost atoms: original 125 current 62 (src/thermo.cpp:427)"
