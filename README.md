@@ -21,36 +21,12 @@ The repository also contains Python scripts used for data analysis and visualisa
 ## 📂 Repository Structure
 ```python
 ├── data/              # Raw simulation outputs and processed datasets
-├── python_plot/       # Python scripts for data analysis and visualisation
-├── reports/           # LaTeX source and compiled PDF reports
+├── project_folder/    # LaTeX source, figures and .bib file
 ├── LICENSE            # Project license
-└── README.md          # Repository documentation
+├── README.md          # Repository documentation
+├── complab_ls.pdf     # Compiled lab report 
+└── python plot.ipynb  # Python notebook for data plotting
 ```
-
-### `data`
-Contains simulation outputs and numerical data generated during the molecular dynamics runs. These may include trajectories, thermodynamic quantities, and derived datasets used for analysis.
-
-### `python_plot`
-Python scripts used to process and visualise simulation data. These scripts generate plots such as:
-
-- Lennard–Jones potential curves
-- radial distribution functions
-- time-dependent simulation properties
-
-The scripts rely primarily on:
-
-- `numpy`
-- `matplotlib`
-
-### `reports`
-Contains the written report for the computational lab, including:
-
-- theoretical derivations
-- simulation analysis
-- figures and visualisations
-- discussion of results
-
-Reports are written in **LaTeX**.
 
 ---
 
